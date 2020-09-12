@@ -1,0 +1,29 @@
+{% extends "todo_app/base.html" %}
+{% block content%}
+
+
+<div class="card" style="width: 100%;">
+    <div class="card-header">
+        Tasks
+    </div>
+    <ul class="list-group list-group-flush">
+        
+        {% for task in task_list %}
+        <li class="list-group-item">
+            {{task}}
+            <a class="btn btn-outline-secondary float-right ml-2 mr-2" type="button" href="{% url 'todo_app:update' task.id %}">Edit</a>
+            <a class="btn btn-outline-danger float-right ml-2 mr-2" type="button" href="{% url 'todo_app:delete' task.id %}">Delete</a>
+        
+            {%empty%}
+            <p class="pl-2">No Tasks Scheduled</p>
+        </li>
+        <!-- <li>{{task}} <a href="/delete/{{task.id}}"><input type="button" value="Delete"></a></li> -->
+    
+        {% endfor %}
+    </ul>
+</div>
+
+<ul class="">
+</ul>
+
+{% endblock %}

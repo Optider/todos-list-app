@@ -1,0 +1,24 @@
+{% extends "todo_app/base.html" %}
+{% block content%}
+
+<h1>
+    {% if not form.instance.pk %}
+    Create Task
+    {% else %}
+    Edit Task "{{task}}"
+    {% endif %}
+</h1>
+<form action="" method="POST">
+    
+
+        {% csrf_token %}
+        {{form.as_table}}
+
+        {% if not form.instance.pk %}
+        <button type="submit" class="btn btn-primary">Add Task</button>
+        {% else %}
+        <button type="submit" class="btn btn-primary">Update</button>
+        {% endif %}
+</form>
+
+{% endblock %}
